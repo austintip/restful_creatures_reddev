@@ -1,10 +1,17 @@
 <h3>It's Dino Time!</h3>
 <h4>Who's coming to the Dino party?</h4>
+<form method="GET" action="/dinos">
+    <label for="nameFilter">Filter by Name</label>
+    <input id="nameFilter" type="text" name="nameFilter">
+    <input type="submit">
+</form>
 <ul>
-    <% dinos.forEach(dino => { %>
+    <% dinos.forEach((dino, index) => { %>
     <li>
-        <p><strong><%= dino.name %></strong> is a 
-        <%= dino.type %></p>
+        <a href="/dinos/<%= index %>"><strong><%= dino.name %></strong></a>
+        <form method="POST" action="/dinos/<%= index %>?_method=DELETE">
+            <input type="submit" value="Delete">
+        </form>
     </li>
     <% }) %>
 </ul>

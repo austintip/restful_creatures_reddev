@@ -1,10 +1,13 @@
 <h3>Pfft...Dinos? Gimme historics!</h3>
 <h4>Let's do this!</h4>
 <ul>
-    <% historics.forEach(historic => { %>
+    <% historics.forEach((historic, histIndex) => { %>
         <li>
             <p><%= historic.type %></p>
             <img src='<%=historic.img_url%>'>
+            <form method="POST" action="/prehistoric_creatures/<%= histIndex %>?_method=DELETE">
+        <input type="submit" value="Delete">
+        </form>
         </li>
     <% }) %>
 </ul>
